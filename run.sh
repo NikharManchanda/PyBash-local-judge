@@ -1,10 +1,5 @@
 #!/bin/bash
-## Version 2.4
 
-## ****** BEGIN - Configuration *******
-
-# Input/Output format
-# '#' will be replaced by 1, 2, ...
 cd ~/Code/Sublime/cf
 
 IN="input.#.txt"
@@ -15,8 +10,6 @@ TL=1 # Time limit (in seconds)
 
 # Compiling options
 CPP="g++ -std=c++17 -w -O2 -DRAHKIN" # C++
-C="gcc -O2 -w -lm" # C
-PAS="gpc" # Pascal
 
 
 # Color Codes
@@ -119,17 +112,6 @@ do
 done
 N=`expr $i - 1`
 
-# echo;
-
-# echo >> .overview;
-# echo -n "Overview: "; cat .overview
-# if [ $CORRECT -ne $N ]
-# then
-#   # echo -e "${RED}X${NC}: Wrong Answer, ${RED}T${NC}: Time Limit Exceeded, ${RED}E${NC}: Probably runtime error"
-#   # echo
-# fi
-
-# echo -n "$CORRECT / $N"
 if [ $CORRECT -eq $N ]
 then
   echo -en "${GREEN}All test cases passed!!${NC}"
