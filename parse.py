@@ -54,31 +54,21 @@ class CompetitiveCompanionServer:
         HandlerClass = MakeHandlerClassFromFilename(filename)
         httpd = HTTPServer((host, port), HandlerClass)
         httpd.serve_forever()
-        # print("Server has been shutdown")
-
+        
 def prepend_line(file_name, line):
-    """ Insert given string as a new line at the beginning of a file """
-    # define name of temporary dummy file
     dummy_file = file_name + '.cpp'
-    # open original file in read mode and dummy file in write mode
     with open(file_name, 'r') as read_obj, open(dummy_file, 'w') as write_obj:
-        # Write given line to the dummy file
         write_obj.write(line + '\n')
-        # Read lines from original file one by one and append them to the dummy file
         for line in read_obj:
             write_obj.write(line)
-    # remove original file
     os.remove(file_name)
-    # Rename dummy file as the original file
     os.rename(dummy_file, file_name)
 
 def make_files():
     global solDir,solpath  
-    # Deleting prev input.* files 
     filelist = [ f for f in os.listdir(solDir) if (f.find("input.")!=-1 or f.find("output.")!=-1) ]
     for f in filelist:
         os.remove(os.path.join(solDir, f))
-    # Writing tests in input.# files
     f2 = open(solDir+"tests", "r")  
     lines=f2.readlines()[0]
     f2.close()
@@ -102,8 +92,6 @@ def make_files():
             opfile.writelines(ans)
             infile.writelines(input)
 
-# @click.command()
-# def cli():
 click.secho("Listening to Competitive Companion",fg='bright_green') 
 CompetitiveCompanionServer.startServer('tests')
 make_files()
@@ -115,11 +103,5 @@ shutil.copyfile(template,myfile)
 prepend_line(solpath,line)
 f.close()
 click.secho("Test Cases Copied",fg='bright_green')
-myfile1 = Path(solDir+'url.txt')
-myfile1.touch(exist_ok=True)
-file1 = open(myfile1,'w')    
-s=url
-file1.writelines(s)
-file1.close()
-    # click.secho("Url Copied",fg='bright_green')    
-    # pass
+
+    
