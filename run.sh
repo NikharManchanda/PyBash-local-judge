@@ -59,7 +59,7 @@ fi
 echo "$COMPILER" | sh
 if [ $? -ne 0 ]
 then
-  echo -e " ${RED}X Compilation Error${NC}";
+  echo -e " ${red}X Compilation Error${NC}";
   cat .compiler_report;
   exit 1;
 fi
@@ -89,11 +89,11 @@ do
   EX_CODE=$?;
   if [ $EX_CODE -eq 137 ] || [ $EX_CODE -eq 152 ]
   then
-    echo -e " ${RED}X TLE: Time Limit Exceeded${NC}";
+    echo -e " ${red}X TLE: Time Limit Exceeded${NC}";
     # echo -n "T" >> .overview;
   elif [ $EX_CODE -ne 0 ]
   then
-    echo -e " ${RED}X RE: Runtime Error${NC}";
+    echo -e " ${red}X RE: Runtime Error${NC}";
     # echo -n "E" >> .overview;
   else
     PROG_TIME=`cat .time_info | grep real | cut -d" " -f2`;
@@ -104,7 +104,7 @@ do
       # echo -n "*" >> .overview
       CORRECT=`expr $CORRECT + 1`
     else
-      echo -e " ${RED}X WA${NC} [$PROG_TIME]"
+      echo -e " ${red}X WA${NC} [$PROG_TIME]"
       # echo -n "X" >> .overview
       echo -e "Your answer:"
       cat .$1.out
@@ -134,7 +134,7 @@ if [ $CORRECT -eq $N ]
 then
   echo -en "${GREEN}All test cases passed!!${NC}"
 else
-	echo -en "${RED}$CORRECT / $N test cases passed${NC}"
+	echo -en "${red}$CORRECT / $N test cases passed${NC}"
 fi
 echo
 echo
