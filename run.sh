@@ -99,10 +99,10 @@ do
     else
       echo -e " ${red}X WA${NC} [$PROG_TIME]"
       # echo -n "X" >> .overview
-      echo -e "Your answer:"
+      echo -e "${CYAN}Your Answer:${NC}"
       cat .$1.out
       echo
-      echo -e "Exp answer:"
+      echo -e "${CYAN}Exp answer:${NC}"
       cat $TEST_CASE_OUT
       echo
     fi
