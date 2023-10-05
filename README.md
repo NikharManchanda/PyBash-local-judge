@@ -1,3 +1,3 @@
 # PyBash-local-judge
 
-My local judge and .zshrc customizations for backup.
+My local judge and .zshrc customizations that I use for CP.
