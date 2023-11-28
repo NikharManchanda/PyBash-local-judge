@@ -11,9 +11,11 @@ now = datetime.now()
 # dd/mm/YY H:M:S
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
-template='/home/rahkin/Code/Sublime/template.cpp'
-solpath='/home/rahkin/Code/Sublime/cf/solution.cpp'
-solDir='/home/rahkin/Code/Sublime/cf/'
+# template='~/Code/Sublime/template.cpp'
+# solpath='~/Code/Sublime/solution.cpp'
+template=os.path.expanduser('~/Code/PyBash-local-judge/template.cpp')
+solpath=os.path.expanduser('~/Code/Sublime/solution.cpp')
+solDir=os.path.expanduser('~/Code/Sublime/')
 url=''
 timelimit=''
 memorylimit=''
@@ -55,7 +57,8 @@ class CompetitiveCompanionServer:
         httpd = HTTPServer((host, port), HandlerClass)
         httpd.serve_forever()
         
-def prepend_line(file_name, line):
+def prepend_line(file_name):
+    line='/**\n'+' *    author:  Rahkin\n'+f' *    created: {dt_string} \n'+'**/\n'
     dummy_file = file_name + '.cpp'
     with open(file_name, 'r') as read_obj, open(dummy_file, 'w') as write_obj:
         write_obj.write(line + '\n')
@@ -95,13 +98,16 @@ def make_files():
 click.secho("Listening to Competitive Companion",fg='bright_green') 
 CompetitiveCompanionServer.startServer('tests')
 make_files()
-line='/**\n'+' *    author:  Rahkin\n'+f' *    created: {dt_string} \n'+'**/\n'
-myfile = Path(solpath)
-myfile.touch(exist_ok=True)
-f = open(myfile,'w')    
-shutil.copyfile(template,myfile)
-prepend_line(solpath,line)
-f.close()
+
+def touch_file(file_path):   
+    # Convert the provided path to a Path object
+    path_object = Path(file_path)
+    # Touch the file (create if it doesn't exist and update access/modification times)
+    path_object.touch()
+
+touch_file(solpath)
+shutil.copyfile(template,solpath)
+prepend_line(solpath)
 click.secho("Test Cases Copied",fg='bright_green')
 
     

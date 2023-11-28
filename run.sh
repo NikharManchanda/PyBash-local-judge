@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/Code/Sublime/cf
+cd ~/Code/Sublime/
 
 IN="input.#.txt"
 OUT="output.#.txt"

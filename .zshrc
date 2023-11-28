@@ -5,26 +5,24 @@ plugins=(
 zsh-autosuggestions
 )
 
-alias subl='"/mnt/c/Program Files/Sublime Text/subl.exe"'
-
 # My custom functions for CP
 dbrun(){
- cd ~/Code/Bash-local-judge-main/;
+ cd ~/Code/PyBash-local-judge/;
  ./dbrun.sh;
 }
 run(){
- cd ~/Code/Bash-local-judge-main/;
+ cd ~/Code/PyBash-local-judge/;
  ./run.sh solution.cpp;
 }
 parse(){
- cd ~/Code/Bash-local-judge-main/;
+ cd ~/Code/PyBash-local-judge/;
  python3 parse.py;
- cd ~/Code/Sublime/cf/;
+ cd ~/Code/Sublime/;
  subl solution.cpp;
 }
 temp(){
- cd ~/Code/Bash-local-judge-main/;
+ cd ~/Code/PyBash-local-judge/;
  python3 temp.py;
- cd ~/Code/Sublime/cf/;
+ cd ~/Code/Sublime/;
  subl solution.cpp;
 }
