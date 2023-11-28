@@ -18,11 +18,11 @@ parse(){
  cd ~/Code/PyBash-local-judge/;
  python3 parse.py;
  cd ~/Code/Sublime/;
- subl solution.cpp;
+ code solution.cpp;
 }
 temp(){
  cd ~/Code/PyBash-local-judge/;
  python3 temp.py;
  cd ~/Code/Sublime/;
- subl solution.cpp;
+ code solution.cpp;
 }
